@@ -1,0 +1,68 @@
+.search-bar {
+  width: 100%;
+  height: 1.0666666667rem;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.3733333333rem;
+}
+.search-bar .bar-location {
+  margin-right: 0.5333333333rem;
+  border-radius: 0.3466666667rem;
+  background-color: rgba(0, 0, 0, 0.33);
+  height: 0.7466666667rem;
+  width: 2.4533333333rem;
+}
+.search-bar .location-icon {
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.5333333333rem;
+  vertical-align: 0.2133333333rem;
+  margin-left: 0.16rem;
+  background-image: url("../img/locationIcon.png");
+  background-size: cover;
+}
+.search-bar .location-text {
+  position: relative;
+  display: inline-block;
+  font-size: 0.3733333333rem;
+  color: #fff;
+  vertical-align: 0.32rem;
+}
+.search-bar .location-text:after {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0.3733333333rem;
+  height: 0.3733333333rem;
+  background-image: url("../img/arrowIcon.png");
+  background-size: cover;
+  right: -0.4rem;
+  top: -0.0266666667rem;
+}
+.search-bar .search-btn {
+  position: relative;
+  width: 4.5333333333rem;
+  height: 0.8rem;
+  background-color: #fff;
+  border-radius: 0.5333333333rem;
+}
+.search-bar .search-btn:before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 0.3733333333rem;
+  height: 0.3733333333rem;
+  background-image: url("../img/searchIcon.png");
+  background-size: cover;
+  top: 0.1866666667rem;
+  left: 0.2666666667rem;
+}
+.search-bar .place-holder {
+  color: #a9a9a9;
+  font-size: 0.3733333333rem;
+  height: 100%;
+  line-height: 0.8rem;
+  margin-left: 0.7466666667rem;
+}

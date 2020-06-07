@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>首页</title>
+    <meta charset="utf-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <script type="text/javascript">
+        (function(){
+            var docEl = document.documentElement
+
+            // set 1rem = viewWidth / 10
+            function setRemUnit () {
+                var rem = docEl.clientWidth / 10;
+                docEl.style.fontSize = rem + 'px';
+            }
+
+            setRemUnit()
+
+            // reset rem unit on page resize
+            window.addEventListener('resize', setRemUnit)
+            window.addEventListener('pageshow', function (e) {
+            if (e.persisted) {
+                setRemUnit()
+            }
+            });
+        })();
+    </script>
+    <link rel="stylesheet" type="text/css" href="./../lib/reset.css">
+    <link rel="stylesheet" type="text/css" href="./contentList/contentList.css">
+    <link rel="stylesheet" type="text/css" href="./header/header.css">
+    <link rel="stylesheet" type="text/css" href="./../common/bottomBar/bottomBar.css">
+  
+</head>
+<body>
+
+    <!--头部开始-->
+    <div class="header">订单</div>
+    <!--头部结束-->
+    <!--订单列表开始-->
+    <div class="wrap">
+    <div class="order-list"></div>
+    <div class="loading">加载中</div>
+    </div>
+    <!--订单列表结束-->
+    <!--底部栏-->
+    <div class="bottom-bar">
+    </div>
+    <!--底部栏-->
+    
+    <script type="text/javascript" src="./../lib/jquery.min.js"></script>
+    <script type="text/javascript" src="./contentList/contentList.js"></script>
+    <script type="text/javascript" src="./../common/bottomBar/bottomBar.js"></script>
+</body>
+</html>

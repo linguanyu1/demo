@@ -1,0 +1,21 @@
+.header {
+  width: 100%;
+  height: 1.7066666667rem;
+  background-color: #fff;
+  border-bottom: 1px solid #b2b2b2;
+  font-size: 0.4533333333rem;
+  color: #333;
+  text-align: center;
+  line-height: 1.7066666667rem;
+  font-weight: bold;
+}
+.loading{
+  padding-top: 0.266rem;
+  padding-bottom: 0.2666rem;
+  font-size: 0.426rem;
+  text-align: center;
+  color: #ccc;
+}
+.wrap{
+  padding-bottom: 2.6777rem;
+}

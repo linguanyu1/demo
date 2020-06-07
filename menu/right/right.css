@@ -1,0 +1,66 @@
+.menu-item {
+  display: flex;
+  padding-top: 0.6666666667rem;
+  padding-bottom: 0.6666666667rem;
+  border-bottom: 1px solid #f0f0f0;
+  position: relative;
+}
+.menu-item .img {
+  width: 1.6533333333rem;
+  height: 1.6533333333rem;
+  margin-right: 0.2666666667rem;
+}
+.menu-item .menu-item-right {
+  flex: 1;
+}
+.menu-item .item-title {
+  font-size: 0.4266666667rem;
+  color: #2f2f2f;
+}
+.menu-item .item-desc, .menu-item .item-zan {
+  color: #a9a9a9;
+  font-size: 0.32rem;
+  margin-top: 0.16rem;
+  line-height: 0.3733333333rem;
+  padding-right: 0.1066666667rem;
+}
+.menu-item .item-desc.item-desc, .menu-item .item-zan.item-desc {
+  line-height: 0.4533333333rem;
+}
+.menu-item .item-price {
+  margin-top: 0.2666666667rem;
+  color: #fe4d3d;
+  font-size: 0.48rem;
+}
+.menu-item .unit {
+  color: #a9a9a9;
+  font-size: 0.32rem;
+}
+.menu-item .select-content {
+  position: absolute;
+  right: 0.24rem;
+  bottom: 0.56rem;
+  display: flex;
+}
+.menu-item .plus {
+  width: 0.6666666667rem;
+  height: 0.6666666667rem;
+  background-size: 100% 100%;
+  background-image: url("./img/plus.png");
+}
+.menu-item .minus {
+  width: 0.6666666667rem;
+  height: 0.6666666667rem;
+  background-size: 100% 100%;
+  background-image: url("./img/minus.png");
+}
+.menu-item .count {
+  font-size: 0.4rem;
+  color: #2f2f2f;
+  width: 0.5333333333rem;
+  height: 0.6666666667rem;
+  line-height: 0.6666666667rem;
+  margin-left: 0.0533333333rem;
+  margin-right: 0.0533333333rem;
+  text-align: center;
+}

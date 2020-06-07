@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+ 
+	<head>
+		<title></title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, width=device-width, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="css/rest.css" />
+	</head>
+ 
+	<body id="bodybox">
+<div id="mian" style="display:block">    
+    <div class="header">  <a href="/wechatpay/"></a> 付款</div><br>
+   
+   <div class="box"> 
+   
+     <div class="meg">
+    
+      <div class="meg_l">
+        <div class="p1">付款给商家</div>
+        <div class="p2">肯德基</div>
+      </div>
+      
+      <div class="meg_r" id="meg_r"><img src="img/jftc_03.png"></div>
+      
+     </div>
+     
+     
+     <p class="p3">金额</p>
+     
+     <p class="p4"><span>￥  </span><input id="btn" class="p4_1" type="tel" value="输入金额" onFocus="this.value = '';"/></p>
+     
+     <br>
+     
+     <input type="button" class="myBtn1" id="myBtn"  value="付款"/>
+    
+      
+  </div>   
+
+	<!-- 打开弹窗按钮 -->
+	
+		<!-- 弹窗 -->
+		<div id="myModal" class="modal">
+			<!-- 弹窗内容 -->
+			<div class="modal-content">
+				<div class="paymentArea">
+					<div class="paymentArea-Entry">
+						<div class="paymentArea-Entry-Head">
+							<img src="img/xx_03.jpg" class="close" />
+							<img src="img/jftc_03.png" class="useImg">
+							<span class="tips-txt">请输入支付密码</span>
+						</div>
+						<div class="paymentArea-Entry-Content">
+							<div class="pay-name">付款给个人</div>
+							<div id="price" class="pay-price">￥88.88</div>
+                            
+                            
+						</div>
+						<ul class="paymentArea-Entry-Row"></ul>
+					</div>
+					<div class="paymentArea-Keyboard">
+						<h4>
+							<img src="img/jftc_14.jpg" height="10" />
+						</h4>
+						<ul class="target">
+							<li>
+								<a>1</a>
+								<a>2</a>
+								<a>3</a>
+							</li>
+							<li>
+								<a>4</a>
+								<a>5</a>
+								<a>6</a>
+							</li>
+							<li>
+								<a>7</a>
+								<a>8</a>
+								<a>9</a>
+							</li>
+							<li>
+								<a class="p5"></a>
+								<a> 0 </a>
+								<a class="p5">X</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>        
+ 
+ <!--支付成功页面-->
+ 
+ <div class="su_bg" id="subox" style="display:none">
+ 
+ <p class="subg"><img src="img/subg.jpg"></p>
+ <p class="sutext"><strong>支付成功</strong></p>
+ <p class="suprice" id="suprice">￥5.20</p>
+ <p class="sushou">收款方</p>
+ <p class="suren" id="suren"><img src="img/jftc_03.png"></p>
+ 
+ <p class="sunname">麦当劳（万象城店）</p>
+ <br><br>
+ <p><input style="background-color:rgb(237,237,237);border: 3px;" type="button" class="sunbtn" id="myBtn"  value="完成"  onClick="location.href='./../order/order.html';"/></p>
+ </div>
+ 
+ 
+ <!--支付成功页面-->
+        
+        
+<script>        
+
+ //定义根目录字体大小，通过rem实现适配
+			document.addEventListener("DOMContentLoaded", function() {
+				var html = document.documentElement;
+				var windowWidth = html.clientWidth;
+				//console.log(windowWidth)
+				html.style.fontSize = windowWidth / 7.5 + "px";
+			}, false);
+ 
+			//获取数据
+			var loc = location.href;
+			var n1 = loc.length;
+			var n2 = loc.indexOf('=');
+			var txt = decodeURI(loc.substr(n2+1,n1-n2));
+			var btn = document.getElementById('btn');
+			btn.value = txt;
+
+			// 获取弹窗
+			var modal = document.getElementById('myModal');
+			var oMian = document.getElementById('mian');
+			var oSubox = document.getElementById('subox');
+			var oSuprice = document.getElementById('suprice');
+			var oBodybox = document.getElementById('bodybox');
+			// 打开弹窗的按钮对象
+			var btn = document.getElementById("myBtn");
+			var oBtn = document.getElementById('btn');
+			var oPrice = document.getElementById("price");
+			// 获取 <span> 元素，用于关闭弹窗 that closes the modal
+			var span = document.getElementsByClassName("close")[0];
+			/*创建密码输入框*/
+			var entryArea = document.querySelector(".paymentArea-Entry-Row");
+			for(var i = 0; i < 6; i++) {
+				var li = document.createElement("li");
+				entryArea.appendChild(li);
+			}
+			/*键盘操作*/
+			var doms = document.querySelectorAll('ul li a');
+			var entryLis = document.querySelectorAll(".paymentArea-Entry-Row li");
+			var pwds = ""; //存储密码
+			var count = 0; //记录点击次数
+			for(var i = 0; i < doms.length; i++) {
+				! function(dom, index) {
+					dom.addEventListener('click', function() {
+						var txt = this.innerHTML;
+						switch(txt) {
+							case "清空":
+								if(count != 0) {
+									for(var i = 0; i < entryLis.length; i++) {
+										entryLis[i].innerHTML = "";
+									}
+									pwds = "";
+									count = 0;
+									console.log(pwds)
+									console.log(count)
+								}
+								break;
+							case "删除":
+								if(count != 0) {
+									console.log(pwds)
+									entryLis[count - 1].innerHTML = "";
+									pwds = pwds.substring(0, pwds.length - 1);
+									count--;
+									console.log(pwds)
+									console.log(count)
+								}
+								break;
+							default:
+								/*通过判断点击次数 向输入框填充内容*/
+								if(count < 6) {
+									/*创建一个图片对象 插入到方框中*/
+									var img = new Image();
+									img.src = "img/dd_03.png";
+									entryLis[count].appendChild(img);
+									/*为存储密码的对象赋值*/
+									if(pwds == "") {  
+                                                                            pwds = txt;  
+                                                                        } else {  
+                                                                            pwds += txt; 
+                                       	                                    pwds = pwds.replace(/\s/g,""); //对pwds进行去空字符处理
+                                                                        }  
+									count++;
+									if(pwds.length == 6) {
+										
+										oMian.style.display = 'none';
+										oSubox.style.display = 'block';
+										oBodybox.style.background = 'none';
+										
+									}
+								} else {
+									return;
+									alert("超出限制")
+								}
+						}
+					});
+				}(doms[i], i);
+			}
+			// 点击按钮打开弹窗
+			btn.onclick = function() {
+			
+			
+			
+			var str = oBtn.value;
+				 
+				
+				if(str.length > 2){
+			oPrice.innerHTML = '￥' + oBtn.value + '0';			
+			oSuprice.innerHTML = '￥' + oBtn.value + '0';		
+				
+			
+			}else{
+			
+			
+			 oPrice.innerHTML = '￥' + oBtn.value + '.'+ '00';
+			 oSuprice.innerHTML = '￥' + oBtn.value + '.'+ '00';
+			}
+
+						
+						
+					
+			  
+				modal.style.display = "block";
+			}
+			// 点击 <span> (x), 关闭弹窗
+			span.onclick = function() {
+				modal.style.display = "none";
+				if(count != 0) {
+					for(var i = 0; i < entryLis.length; i++) {
+						entryLis[i].innerHTML = "";
+					}
+					pwds = "";
+					count = 0;
+				}
+			}
+			// 在用户点击其他地方时，关闭弹窗
+			window.onclick = function(event) {
+				if(event.target == modal) {
+					modal.style.display = "none";
+					if(count != 0) {
+					for(var i = 0; i < entryLis.length; i++) {
+						entryLis[i].innerHTML = "";
+					}
+					pwds = "";
+					count = 0;
+				}
+				}
+			}
+			/*开关键盘*/
+			var openKey = document.querySelector(".paymentArea-Entry-Row");
+			var switchOfKey = document.querySelector(".paymentArea-Keyboard h4");
+			switchOfKey.addEventListener('click', function() {
+				var KeyboardH = document.querySelector(".paymentArea-Keyboard").clientHeight;
+				document.querySelector(".paymentArea-Keyboard").style.height = KeyboardH + "px";
+				document.querySelector(".paymentArea-Keyboard").style.backgroundColor = "transparent";
+				document.querySelector(".paymentArea-Keyboard h4").style.display = "none";
+				document.querySelector(".paymentArea-Keyboard ul").style.display = "none";
+			})
+			openKey.addEventListener('click', function() {
+				document.querySelector(".paymentArea-Keyboard").style.backgroundColor = "#fff";
+				document.querySelector(".paymentArea-Keyboard h4").style.display = "block";
+				document.querySelector(".paymentArea-Keyboard ul").style.display = "block";
+			})
+       
+
+ window.onload=function(){
+	var oBtn = document.getElementById('btn'); 
+	var btn = document.getElementById("myBtn");
+	
+	 oBtn.onclick = function(){
+		 
+		oBtn.value = ''; 
+		oBtn.className = 'p4_1_action';
+		 
+		 }
+	 btn.oclick = function(){
+		
+		oPrice.innerHTML = oBtn.value; 
+		 
+		 }
+	 
+	 
+	 }
+ 
+ </script>       
+</html>
